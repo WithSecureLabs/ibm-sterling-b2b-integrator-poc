@@ -7,7 +7,7 @@ import java.net.Socket;
 public class Main {
     public static void main(String[] args) throws Exception {
         if(args.length != 2) {
-            System.err.println("Usage: program <cmdLine> <outfile_or_SEND>");
+            System.err.println("Usage: Main <cmdLine> <outfile_or_SEND>");
             System.exit(9);
         } else {
             System.out.println("[+] Creating object...");
