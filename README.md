@@ -5,8 +5,9 @@ Proof of concept code for the exploitation of the vulnerabilities discovered aga
 - LPE Command Injection - if authentication is disabled
 - Pre-auth Deserialisation RCE - assigned CVE-2024-31903, see the relevant IBM advisory here: https://www.ibm.com/support/pages/node/7172233 
  
-More details about these issues can be found in the accompanying blog post: 
-https://labs.withsecure.com/advisories/ibm-b2b-integrator
+More details about these issues can be found in my DistricCon talk "To B or not 2B: Breaking the IBM B2B Integrator with, and without authentication":
+ 
+https://www.districtcon.org/bios-and-talks-2025/to-b-or-not-to-b
 
 
 ## Repo Structure
